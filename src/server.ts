@@ -2,6 +2,7 @@ import "reflect-metadata"
 import express, { Request, Response, NextFunction } from "express"
 import cors from "cors"
 import "express-async-errors"
+import 'dotenv/config'
 
 import { router } from "./routes"
 
@@ -38,4 +39,4 @@ app.use((err: IError, request: Request, response: Response, next: NextFunction) 
   })
 })
 
-app.listen(3000, () => console.log("Server is running"))
+app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}`))

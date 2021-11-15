@@ -29,7 +29,7 @@ class AuthenticateUserService {
         email: user.email,
         name: user.name
       },
-      "2af55de45176b6e7402ac496f468585c",
+      process.env.SECRET_JWT_TOKEN,
       {
         subject: user.id,
         expiresIn: "1d"

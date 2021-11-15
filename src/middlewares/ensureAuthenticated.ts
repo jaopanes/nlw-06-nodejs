@@ -15,7 +15,7 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
   const [, token] = authToken.split(" ")
 
   try {
-    const { sub } = verify(token, "2af55de45176b6e7402ac496f468585c") as IPayload
+    const { sub } = verify(token, process.env.SECRET_JWT_TOKEN) as IPayload
 
     request.user_id = sub;
 
@@ -23,9 +23,4 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
   } catch (error) {
     return response.status(401).end()
   }
-
-
-
-
-  return next()
 }
